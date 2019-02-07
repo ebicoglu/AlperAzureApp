@@ -4,8 +4,6 @@
     ViewData["Title"] = "Alper | Home page";
 }
 
-
-
 <h2>
     Posts count: @Model.Posts.Count
 </h2>
@@ -20,10 +18,10 @@
     <hr>
 }
 
-
-
 <form method="post">
     <input type="text" id="NewPostContent" name="NewPostContent" />
 
     <button type="submit">Send New Post</button>
+
+    <button type="submit" asp-page-handler="clearPosts" class="ml-3">Clear Posts</button>
 </form>

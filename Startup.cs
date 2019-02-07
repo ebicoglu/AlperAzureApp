@@ -11,8 +11,6 @@ namespace AlperAzureApp
 {
     public class Startup
     {
-        string DbConnectionString = @"Server=(localdb)\mssqllocaldb;Database=AlperAzureDb;Trusted_Connection=True;ConnectRetryCount=0";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,7 +31,7 @@ namespace AlperAzureApp
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(DbConnectionString));
+            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(MyDbContext.DbConnectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

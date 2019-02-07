@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AlperAzureApp.Database;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AlperAzureApp.Pages
@@ -34,6 +35,15 @@ namespace AlperAzureApp.Pages
             Posts = _myDbContext.Posts.ToList();
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostClearPostsAsync()
+        {
+             _myDbContext.Posts.RemoveRange(_myDbContext.Posts);
+           
+            await _myDbContext.SaveChangesAsync();
+          
+            return RedirectToPage();
         }
     }
 }
