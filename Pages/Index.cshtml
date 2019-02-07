@@ -4,8 +4,26 @@
     ViewData["Title"] = "Alper | Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to Alper's Azure App</h1>
-    
-    <p>This is version #3</p>
-</div>
+
+
+<h2>
+    Posts count: @Model.Posts.Count
+</h2>
+
+
+@foreach (var post in Model.Posts)
+{
+    <div>
+        <strong>[@post.Id]</strong> <span>@post.Content</span>
+    </div>
+
+    <hr>
+}
+
+
+
+<form method="post">
+    <input type="text" id="NewPostContent" name="NewPostContent" />
+
+    <button type="submit">Send New Post</button>
+</form>

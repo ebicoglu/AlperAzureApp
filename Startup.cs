@@ -1,19 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AlperAzureApp.Database;
+using Microsoft.EntityFrameworkCore;
 
 namespace AlperAzureApp
 {
     public class Startup
     {
+        string DbConnectionString = @"Server=(localdb)\mssqllocaldb;Database=AlperAzureDb;Trusted_Connection=True;ConnectRetryCount=0";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,6 +32,8 @@ namespace AlperAzureApp
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddDbContext<MyDbContext>(options => options.UseSqlServer(DbConnectionString));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
