@@ -1,0 +1,1 @@
+dotnet publish /p:PublishProfile=AlperAzureAppWebDeploy /p:UserName=$AlperAzureApp /p:Password=BehS09sFEpvRRqnQCBfQ7w3mvyKiA9te0Pz2YF06y2rmtisejsexQeuJc9wi
